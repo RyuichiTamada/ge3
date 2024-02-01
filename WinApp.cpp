@@ -19,12 +19,8 @@ LRESULT WinApp::WindowProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 void WinApp::Initialize()
 {
 
-    // ウィンドウサイズ
-    const int window_width = 1280;  // 横幅
-    const int window_height = 720;  // 縦幅
-
     // ウィンドウクラスの設定
-    WNDCLASSEX w{};
+    
     w.cbSize = sizeof(WNDCLASSEX);
     w.lpfnWndProc = (WNDPROC)WindowProc; // ウィンドウプロシージャを設定
     w.lpszClassName = L"DirectXGame"; // ウィンドウクラス名
@@ -60,4 +56,10 @@ void WinApp::Initialize()
 
 void WinApp::Update()
 {
+}
+
+void WinApp::Finalize()
+{
+    // ウィンドウクラスを登録解除
+    UnregisterClass(w.lpszClassName, w.hInstance);
 }
