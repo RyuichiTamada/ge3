@@ -214,7 +214,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
     // DirectX初期化処理　ここから
 
     dxCommon_ = new DirectXCommon();
-    dxCommon_->Initialize();
+    dxCommon_->Initialize(winApp_);
 
     // DirectX初期化処理　ここまで
 #pragma endregion
