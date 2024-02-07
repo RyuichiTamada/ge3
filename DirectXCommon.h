@@ -4,6 +4,7 @@
 #include<dxgi1_6.h>
 #include <d3d12.h>
 #include <vector>
+#include<chrono>
 
 #include"WinApp.h"
 
@@ -36,6 +37,11 @@ private:
 	void DepthBufferInitialize();
 	//フェンス
 	void FenceInitialize();
+
+	//FPS固定初期化
+	void InitializeFixFPS();
+	//FPS更新
+	void UpdateFixFPS();
 
 private:
 	WinApp* winApp = nullptr;
@@ -74,4 +80,7 @@ private:
 	UINT64 fenceVal = 0;
 
 	D3D12_RESOURCE_BARRIER barrierDesc{};
+
+	//記録用時間計測の変数
+	std::chrono::steady_clock::time_point reference_;
 };
