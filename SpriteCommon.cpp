@@ -1,7 +1,7 @@
 #include "SpriteCommon.h"
 #include<cassert>
 
-#pragma comment(lib, "dxcompiler.lib")
+#pragma comment(lib, "dxcompiler.lib")//dxccompilerがうまく読み取れない。programを再インストールしてと出る
 
 using namespace Microsoft::WRL;
 
