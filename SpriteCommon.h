@@ -1,23 +1,37 @@
 #pragma once
-#include<wrl.h>
+
 #include <string>
+#include<wrl.h>
 #include<dxcapi.h>
+#include<d3d12.h>
 
+#include"DirectXCommon.h"
 
-//ã§í 
+#include<DirectXTex.h>
+
 class SpriteCommon
 {
-
 public:
-	//èâä˙âª
-	void Initialize();
+
+	void Initialize(DirectXCommon* dxCommon);
+
+	ID3D12RootSignature* GetRootSignature() { return rootSignature.Get(); }
+	ID3D12PipelineState* GetPipelineState() { return pipelineState.Get(); }
+
+
 
 private:
 	static IDxcBlob* CompileShader(
 		const std::wstring& filePath,
 		const wchar_t* profile,
-		IDxcUtils* dxcUtils,
+		IDxcUtils* dxUtils,
 		IDxcCompiler3* dxcCompiler,
-		IDxcIncludeHandler* includeHandler
-	);
+		IDxcIncludeHandler* includeHandler);
+
+private:
+	DirectXCommon* dxCommon_ = nullptr;
+
+	Microsoft::WRL::ComPtr<ID3D12RootSignature> rootSignature;
+
+	Microsoft::WRL::ComPtr<ID3D12PipelineState> pipelineState;
 };
